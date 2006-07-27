@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/chunker.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Untitled Document</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+<link rel="stylesheet" href="site.css" type="text/css" />
+</head>
+
+<body bgcolor="#ffffff">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr bgcolor="#D5EDB3">
+    <td width="382" colspan="2" rowspan="2"><a href="http://sourceforge.net/projects/gmapschunker"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=173258&amp;type=2" width="125" height="37" border="0" alt="SourceForge.net Logo" /></a></td>
+    <td height="50" id="logo" valign="bottom" align="center" nowrap="nowrap">Google Maps Database Chunker </td>
+    <td width="100%">&nbsp;</td>
+  </tr>
+
+  <tr bgcolor="#D5EDB3">
+    <td id="tagline" valign="top" align="center">&gt;insert pithy phrase here&lt; </td>
+	<td width="100%">&nbsp;</td>
+  </tr>
+
+  <tr bgcolor="#99CC66">
+  <td>&nbsp;</td>
+  	<td colspan="3" id="dateformat" height="20"><a href="javascript:;">HOME</a>&nbsp;&nbsp;::&nbsp;&nbsp;<a href="docs/sample.html">SAMPLE</a> &nbsp;&nbsp;::&nbsp;&nbsp;<a href="docs/db.html"></a><a href="docs/db.html">DATABASE REQUIREMENTS </a></td>
+  </tr>
+
+ <tr>
+    <td width="40">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td colspan="2" valign="top">&nbsp;<br />
+    &nbsp;<br />
+   <table border="0" cellspacing="0" cellpadding="2" width="504">
+        <tr>
+          <td class="pageName"><!-- InstanceBeginEditable name="title" -->About GMDC<!-- InstanceEndEditable --></td>
+        </tr>
+        <tr>
+          <td class="bodyText"><!-- InstanceBeginEditable name="stuff" -->
+            <p>GMDC is a library for downloading and displaying information from a database inside Google Maps in an efficient manner. It consists of a javascript library, some fields in your database and a server script. The script is currently in PHP, but should be easy to port to any platform.</p>
+            <p>This chunker started life in a project of mine, and targeted MS Virtual Earth (as at the time only VE had decent Europe maps). Now Google has good Europe maps, and the freeness of VE kind of vanished, so the code was ported over to Google Maps. When I saw there didn't seem to be anything that did what I wanted (i.e. no code to nick), I rolled the chunker into its own component and made it available.</p>
+            <p>Because the project it comes from is multi-lingual, this is designed to be as well. Just supply your own text! </p>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+        <!-- InstanceBeginRepeat name="bits" --><!-- InstanceBeginRepeatEntry -->
+        <tr>
+          <td class="subHeader" id="monthformat">&nbsp;<br />
+          <!-- InstanceBeginEditable name="bitheader" -->Burble<!-- InstanceEndEditable --></td>
+        </tr>
+        <tr>
+          <td class="bodyText" valign="top"><p><!-- InstanceBeginEditable name="bitbody" --><strong>Data is pulled down from the server in chunks.</strong> In this initial release, the chunk size is fixed in 0.5 degree blocks. The blocks full of markers are added to the map automatically and removed when they are moved off the screen. Once the user zooms out past a (user configurable) level, the markers are removed and replaced with an opaque rectangular overlay saying &quot;xx items&quot;. All text is configurable (so easy for internationalization). The limit at which chunks are pulled back is again user configurable. You don't want somebody to zoom out to see the whole world and pull it back in 1/2 degree chunks... The server side is very simple and easily portable from PHP. Though the current implementation attempts to be as efficient as possible by caching the database results in gzipped format, and also pays attention to the if-modified-since HTTP header, so not returning the results unless anything has changed. To run the server script as is, you will need PEAR::DB and PEAR::Cache_Lite. If you want the caching to work, make sure your webserver can write to the directory you point it at. Oh and dont forget to clear the cache when you add/remove/edit items in your db as of course the cache will go out of sync.<!-- InstanceEndEditable --></p></td>
+        </tr>
+        <!-- InstanceEndRepeatEntry --><!-- InstanceBeginRepeatEntry -->
+        <tr>
+          <td class="subHeader" id="monthformat">&nbsp;<br />
+          <!-- InstanceBeginEditable name="bitheader" -->Future Burble<!-- InstanceEndEditable --></td>
+        </tr>
+        <tr>
+          <td class="bodyText" valign="top"><p><!-- InstanceBeginEditable name="bitbody" --><strong>This is only the start.</strong> Later versions will have a user configurable level at which markers will be loaded and load meta chunk information. Instead of loading each individual chunk just to see how many markers are in to show the overlay image, the count of items in each chunk for a large swathe of the map will be loaded in a large block. <!-- InstanceEndEditable --></p></td>
+        </tr>
+        <!-- InstanceEndRepeatEntry --><!-- InstanceBeginRepeatEntry -->
+        <tr>
+          <td class="subHeader" id="monthformat">&nbsp;<br />
+          <!-- InstanceBeginEditable name="bitheader" -->Compatibility<!-- InstanceEndEditable --></td>
+        </tr>
+        <tr>
+          <td class="bodyText" valign="top"><p><!-- InstanceBeginEditable name="bitbody" --><strong>Tested working with </strong>Internet Explorer 6, Firefox 1.5, Opera 9. Somebody test Safari for me please. Or perhaps it might be a good idea if Apple were to make some dev machines we (as interactive web developers) could VNC into so we could test on Safari for all the people who have too much money to spend on hardware. <!-- InstanceEndEditable --></p></td>
+        </tr>
+        <!-- InstanceEndRepeatEntry --><!-- InstanceBeginRepeatEntry -->
+        <tr>
+          <td class="subHeader" id="monthformat">&nbsp;<br />
+          <!-- InstanceBeginEditable name="bitheader" -->License<!-- InstanceEndEditable --></td>
+        </tr>
+        <tr>
+          <td class="bodyText" valign="top"><p><!-- InstanceBeginEditable name="bitbody" --><strong>LGPL</strong><!-- InstanceEndEditable --></p></td>
+        </tr>
+        <!-- InstanceEndRepeatEntry --><!-- InstanceBeginRepeatEntry -->
+        <tr>
+          <td class="subHeader" id="monthformat">&nbsp;<br />
+          <!-- InstanceBeginEditable name="bitheader" -->Apology<!-- InstanceEndEditable --></td>
+        </tr>
+        <tr>
+          <td class="bodyText" valign="top"><p><!-- InstanceBeginEditable name="bitbody" --><strong>Sorry for this crappy page design.</strong> I just hacked something together from a template in dreamweaver. Maybe I'll do a better job later. <!-- InstanceEndEditable --></p></td>
+        </tr>
+        <!-- InstanceEndRepeatEntry --><!-- InstanceEndRepeat -->
+      </table>
+	   <br />
+    &nbsp;<br />	</td>
+    <td width="100%">&nbsp;</td>
+  </tr>
+
+ <tr>
+    <td width="40">&nbsp;</td>
+    <td width="342">&nbsp;</td>
+    <td width="378">&nbsp;</td>
+	<td width="100%">&nbsp;</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

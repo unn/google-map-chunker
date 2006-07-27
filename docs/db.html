@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/chunker.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Untitled Document</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+<link rel="stylesheet" href="../site.css" type="text/css" />
+</head>
+
+<body bgcolor="#ffffff">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr bgcolor="#D5EDB3">
+    <td width="382" colspan="2" rowspan="2"><a href="http://sourceforge.net/projects/gmapschunker"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=173258&amp;type=2" width="125" height="37" border="0" alt="SourceForge.net Logo" /></a></td>
+    <td height="50" id="logo" valign="bottom" align="center" nowrap="nowrap">Google Maps Database Chunker </td>
+    <td width="100%">&nbsp;</td>
+  </tr>
+
+  <tr bgcolor="#D5EDB3">
+    <td id="tagline" valign="top" align="center">&gt;insert pithy phrase here&lt; </td>
+	<td width="100%">&nbsp;</td>
+  </tr>
+
+  <tr bgcolor="#99CC66">
+  <td>&nbsp;</td>
+  	<td colspan="3" id="dateformat" height="20"><a href="javascript:;">HOME</a>&nbsp;&nbsp;::&nbsp;&nbsp;<a href="sample.html">SAMPLE</a> &nbsp;&nbsp;::&nbsp;&nbsp;<a href="db.html"></a><a href="db.html">DATABASE REQUIREMENTS </a></td>
+  </tr>
+
+ <tr>
+    <td width="40">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td colspan="2" valign="top">&nbsp;<br />
+    &nbsp;<br />
+   <table border="0" cellspacing="0" cellpadding="2" width="504">
+        <tr>
+          <td class="pageName"><!-- InstanceBeginEditable name="title" -->Database Requirements <!-- InstanceEndEditable --></td>
+        </tr>
+        <tr>
+          <td class="bodyText"><!-- InstanceBeginEditable name="stuff" -->
+            <p>The only thing your database really needs to suit working with GMDC is a field called half_degree_index, which is integer, unsigned and indexed. In fact you can call this field what you want, just change the code on the server to select the right field. I am assuming you have latitude, longitude and id fields already, right? :) </p>
+            <p>In the sample directory there is a <a href="../sample/sampleData.sql" target="_blank">sample SQL file</a>  that shows the minimum required for a functioning application. A table called sites contains id, latitude, longitude, name and half_degree_index. </p>
+            <p>The half_degree_index is the key to how this version 1 works, and corresponds to a half degree chunk of data. It is layed out simply as (L)ongitude &amp; l(A)titude : LLLLAAAA. The values are biased so they are not negative (i.e. add 180 to longitude, 90 to latitude) and multiplied by 10. The final digit of each value is however only 5 or 0 - all points are 'chunked' into their respective block. The makes finding the information from the database for a particular chunk very very fast indeed. </p>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+        <!-- InstanceBeginRepeat name="bits" --><!-- InstanceBeginRepeatEntry -->
+        <tr>
+          <td class="subHeader" id="monthformat">&nbsp;<br />
+          <!-- InstanceBeginEditable name="bitheader" -->Calculating half_degree_index <!-- InstanceEndEditable --></td>
+        </tr>
+        <tr>
+          <td class="bodyText" valign="top"><p><!-- InstanceBeginEditable name="bitbody" -->When you add a new site or modify it's position, you will need to calculate the half_degree_index to make sure your new site is picked up by the chunker (and you must invalidate the cache, remember?). The code for this is very simple, here it is in SQL:<br />
+            <br />
+            half_degree_index = floor((s_long+180)*2)/2*100000 + floor((s_lat+90)*2)/2*10<br />
+            <br />
+          You can optimize it by changing the /2*100000 to *50000 and /2*10 to *5, but I've left it in above so you can get the gist of whats going on. (bias the value, then double it. lop off any decimal places, then divide by 2. That will give you a number that is only either x.0 or x.5. Then multiply the value into the correct position) <!-- InstanceEndEditable --></p></td>
+        </tr>
+        <!-- InstanceEndRepeatEntry --><!-- InstanceEndRepeat -->
+      </table>
+	   <br />
+    &nbsp;<br />	</td>
+    <td width="100%">&nbsp;</td>
+  </tr>
+
+ <tr>
+    <td width="40">&nbsp;</td>
+    <td width="342">&nbsp;</td>
+    <td width="378">&nbsp;</td>
+	<td width="100%">&nbsp;</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,70 @@
+.chunkColorBox {
+	position: absolute;
+	background-color: #ffff00;
+	filter: alpha(opacity:30);
+	opacity: 0.3;
+	z-index: -10;
+	border: 1px solid black;
+}
+
+.chunkTextBox {
+	position: absolute;
+	z-index: 10;
+	margin: 0px 0px 0px 0px;
+	text-align: center;
+}
+
+.chunkTextSpan {
+	color: white;
+	font-weight: bold;
+	font-size: 10px;
+	background-color: black;
+	padding: 2px;
+}
+
+#notifyControl {
+	border: 2px solid black;
+	padding: 3px;
+	background: yellow;
+	max-width: 80%;
+	display: none;
+	font-size: 11px;
+	font-family: arial, helvetica;
+	text-align: right;
+	font-weight: bold;
+}
+
+#dbg {
+	background-color: white;
+	overflow: scroll;
+	position: relative;
+	height: 100%;
+	width: 100%;
+	font-size: 9px;
+	font-family: arial, helvetica;
+}
+
+#dbgHeader {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 80%;
+	height: 12px;
+	background-color: #a0a0a0;
+	border-bottom: 1px solid #000000;
+	border-right: 1px solid #000000;
+	padding: 2px;
+	font-size: 10px;
+	z-index:32001;
+}
+
+#dbgContainer {
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	width: 200px;
+	height: 95%;
+	font-size: 90%;
+	z-index:32000;
+	border: 2px outset #0000ff;
+}
