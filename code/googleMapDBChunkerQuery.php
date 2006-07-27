@@ -113,7 +113,8 @@ function &openDB() {
 	require_once "DB.php";
 
 	$options = array(
-		'portability' => DB_PORTABILITY_LOWERCASE | DB_PORTABILITY_RTRIM
+		'portability' => DB_PORTABILITY_LOWERCASE | DB_PORTABILITY_RTRIM,
+		'persistent'  => true
 	);
 
 	$db = DB::connect(CHUNKER_DSN, $options);
