@@ -1,10 +1,10 @@
-<?
+<?php
 //
 // To turn on chunk caching, set CHUNKER_CACHE_ENABLE to true
 // and CHUNKER_CACHE_DIRECTORY to a valid location, that the webserver
 // has WRITE access to
 //
-define( CHUNKER_CACHE_ENABLE, true );
+define( CHUNKER_CACHE_ENABLE, FALSE );
 define( CHUNKER_CACHE_DIRECTORY, $_SERVER["DOCUMENT_ROOT"].'/cache/' );
 define( CHUNKER_CACHE_GLOBAL_NAME, 'googleMapDBChunkerCache' );
 

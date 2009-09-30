@@ -1,11 +1,15 @@
-<?
+<?php
+/*error_reporting(E_ALL);
+ini_set('display_errors', TRUE);
+ini_set('display_startup_errors', TRUE); */
+
 header("Cache-Control: max-age=120");
 require_once "googleMapDBChunkerCache.php";
 
 //
 // Data source name to your database (this WILL need to be changed)
 //
-define( CHUNKER_DSN, 'mysql://g173258ro:spango@mysql4-g/g173258_chunker' );
+define( CHUNKER_DSN, 'mysql://root:root@localhost/sites' );
 
 //
 // Here you can enable GZipping out output data, which is very

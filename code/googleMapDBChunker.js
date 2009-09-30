@@ -145,6 +145,10 @@ NotifyControl.prototype.getDefaultPosition = function() {
 	return G_ANCHOR_TOP_RIGHT;
 }
 
+NotifyControl.prototype.allowSetVisibility = function() {
+	return true;
+}
+
 NotifyControl.prototype.initialize = function(map) {
 	var div = document.createElement("div");
 	div.id = "notifyControl";

@@ -3,16 +3,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
 <meta http-equiv="imagetoolbar" content="no"/>
 <title>Google Maps Database Chunker</title>
-<link rel="stylesheet" href="../../code/googleMapDBChunker.css" type="text/css"/>
+<link rel="stylesheet" href="../code/googleMapDBChunker.css" type="text/css"/>
 <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAd7juOxA3i1Eq5vEHLNJrIRRgZdXuEatx9y3hJ3zCnbopMwVeKhT8fXtI9YfBV_dg4perl-_uf38OKA"
       type="text/javascript"></script>
-<script src="../../code/googleMapDBChunker.js" type="text/javascript"></script>
+<script src="../code/googleMapDBChunker.js" type="text/javascript"></script>
 <script type="text/javascript">
 var map=null, chunker;
 
-//XLog.enabled = true;
+XLog.enabled = true;
 
 function showSite( site ) {
+	console.log(site);
 	site.marker.openInfoWindowHtml( site.name );
 }
 
@@ -25,7 +26,7 @@ function initmap(){
 	map.addControl(new GOverviewMapControl() );
 
 	var options = {
-					serverURL: '../../code/googleMapDBChunkerQuery.php',
+					serverURL: '../code/googleMapDBChunkerQuery.php',
 					maxConcurrentServerRequests: 1
 					};
 	var text = {
@@ -41,6 +42,7 @@ function initmap(){
 
 	chunker = new GoogleMapDBChunker( map, options, text  );
 	chunker.markerClick = showSite;
+	console.log(chunker);
 
 	chunker.onMapChangeView();
 }
